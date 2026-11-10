@@ -1,11 +1,38 @@
-def add(a,b):
-    return a+b
-def sub(a,b):
-    return a-b
-def mal(a,b):
-    return a*b
+from history import History
+from scientific import power, square_root, factorial
+
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b == 0:
+        return "Error: Division by zero!"
+    return a / b
+
+
 if __name__ == "__main__":
-    print(f"===calculator===")
-    print(f"addition 5,6 = {add(5,6)}")
-    print(f"subtraction 6,5 = {sub(6,5)}")
-    print(f"multiplication 6,5 = {mal(6,5)}")
+    calc_history = History()
+
+    print("=== Ultimate Calculator ===")
+
+
+    result = add(10, 5)
+    calc_history.add_record("+", 10, 5, result)
+
+
+    result = power(2, 8)
+    calc_history.add_record("^", 2, 8, result)
+
+    result = square_root(144)
+    calc_history.add_record("√", 144, 0, result)
+
+    result = factorial(5)
+    calc_history.add_record("!", 5, 0, result)
+
+    calc_history.show_history()
